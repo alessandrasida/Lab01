@@ -38,12 +38,21 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </HBox>
-            <TextArea fx:id="txtResult" prefHeight="200.0" prefWidth="200.0">
+            <TextArea fx:id="txtResult" prefHeight="106.0" prefWidth="282.0">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </TextArea>
-            <Button fx:id="btnReset" mnemonicParsing="false" onAction="#doReset" text="Reset">
+            <TextArea fx:id="txtAreaTempo" prefHeight="0.0" prefWidth="282.0">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="1.0" />
+               </padding>
+            </TextArea>
+            <Button fx:id="buttonCancella" alignment="CENTER" mnemonicParsing="false" onAction="#doCancella" text="Cancella" translateX="130.0" translateY="10.0" />
+            <Button fx:id="btnReset" mnemonicParsing="false" onAction="#doReset" text="Reset" translateX="-10.0" translateY="-20.0">
                <VBox.margin>
                   <Insets bottom="5.0" left="230.0" right="5.0" top="5.0" />
                </VBox.margin>

@@ -9,14 +9,17 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-
+import java.util.*;
 public class FXMLController {
 	
 	Parole elenco ;
 
     @FXML
     private ResourceBundle resources;
-
+    
+    @FXML
+    private Button buttonCancella;
+    
     @FXML
     private URL location;
 
@@ -33,15 +36,47 @@ public class FXMLController {
     private TextArea txtResult;
 
     @FXML
+    private TextArea txtAreaTempo;
+    
+    @FXML
     void doInsert(ActionEvent event) {
-
+    	// richiamare addParola e getElenco
+    	elenco.addParola(txtParola.getText());
+    	LinkedList<String> copia = new LinkedList<String>(elenco.getElenco());
+    	String parole = "";
+    	for(String p : copia) {
+    		parole = parole + p + " ";
+    	}
+    	txtResult.setText(parole);
+    	double tempo = System.nanoTime();
+    	txtAreaTempo.setText("Tempo impiegato: " + tempo);
     }
-
+  
     @FXML
     void doReset(ActionEvent event) {
-
+    	elenco.reset();
+    	txtResult.setText(null);
+    	double tempo = System.nanoTime();
+    	txtAreaTempo.setText("Tempo impiegato: " + tempo);
+    	
+    	
     }
-
+    
+    @FXML
+    void doCancella(ActionEvent event) {
+    	String ultima = txtParola.getText();
+    	elenco.cancellaUltima(ultima);
+    	
+    	LinkedList<String> copia = new LinkedList<String>(elenco.getElenco());
+    	String parole = "";
+    	for(String p : copia) {
+    		parole = parole + p + " ";
+    	}
+    	txtResult.setText(parole);
+    	double tempo = System.nanoTime();
+    	txtAreaTempo.setText("Tempo impiegato: " + tempo);
+    }
+    
     @FXML
     void initialize() {
         assert btnInserisci != null : "fx:id=\"btnInserisci\" was not injected: check your FXML file 'Scene.fxml'.";
